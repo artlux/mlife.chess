@@ -4,7 +4,7 @@ window.reloadPageInJs = false;
 window.ftracer = false;
 
 window.debug = false;
-window.startUrl = 'http://redkovka.by/chess_app/';
+window.startUrl = 'https://redkovka.by/chess_app/';
 
 window.deviceId = '';
 
@@ -132,9 +132,9 @@ setTimeout(function t(){
 },100);
 
 if(typeof(window.openDatabase) !== 'undefined'){
-	db = window.openDatabase('mliferasp.db','1.0','mliferasp',1*1024*1024);
+	db = window.openDatabase('mlifechess.db','1.0','mlifechess',1*1024*1024);
 }else{
-	db = window.sqlitePlugin.openDatabase({name: 'mliferasp',location: 'default'},function(db){});
+	db = window.sqlitePlugin.openDatabase({name: 'mlifechess',location: 'default'},function(db){});
 }
 db.transaction(function(tx){
 tx.executeSql("CREATE TABLE IF NOT EXISTS pages (ID VARCHAR PRIMARY KEY, type VARCHAR, text TEXT)",[]);
