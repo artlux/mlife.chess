@@ -62,7 +62,7 @@ window.myApp = new Framework7({
 	swipeBackPage: false,
 	sortable: false,
 	swipeout: false,
-	swipePanel: 'left',
+	swipePanel: false,
 	router: false,
 	cache: false,
 	dynamicPageUrl: 'content-{{name}}',
