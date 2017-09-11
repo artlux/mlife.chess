@@ -1,5 +1,18 @@
-// Initialize your app
-//device.uuid
+window._lang_default = {
+	PODTV:'Подвердить',
+	OTM:'Отменить',
+	ERR:'Ошибка загрузки страницы',
+	ERRSQL:'Ошибка загрузки страницы из базы',
+	ERR2:'Шаблон не найден, возможно произошла ошибка при загрузке данных. Проверьте соединение с Internet и повторите загрузку',
+	ERR3:'Ошибка связи',
+	LOADING:'Загрузка данных завершена',
+	LOAD:'Загрузить данные',
+	LOAD1:'Это первый запуск приложения. Дождитесь загрузки данных',
+	LOAD2:'Это первый запуск приложения. Подключитесь к сети Internet и загрузите данные',
+	ERRCN:'Нет соединения, загрузка невозможна',
+	ALERT:'Уведомление',
+};
+
 window.reloadPageInJs = false;
 window.ftracer = false;
 
@@ -55,14 +68,14 @@ document.addEventListener("backbutton", function(){
 
 var db = false;
 function onRd(){
-
+navigator.splashscreen.show();
 window.myApp = new Framework7({
-	modalButtonOk: 'Подвердить',
-	modalButtonCancel: 'Отменить',
+	modalButtonOk: window._lang_default.PODTV,
+	modalButtonCancel: window._lang_default.OTM,
 	swipeBackPage: false,
 	sortable: false,
 	swipeout: false,
-	swipePanel: false,
+	swipePanel: 'left',
 	router: false,
 	cache: false,
 	dynamicPageUrl: 'content-{{name}}',
@@ -148,7 +161,7 @@ tx.executeSql("CREATE TABLE IF NOT EXISTS book (ID VARCHAR PRIMARY KEY, text TEX
 	startPageContent();
 });
 
-
+setTimeout(function(){navigator.splashscreen.hide();},2000);
 
 }
 
@@ -262,7 +275,7 @@ function getPage(page){
 	if(res.rows.length > 0){
 		var tmp = getTmpl(res.rows.item(0)['type']);
 		if(!tmp){
-			loadCnt = '<div class="content-block-inner"><p class="errorPage">ERROR load page '+page+'</p><p>Шаблон не найден, возможно произошла ошибка при загрузке данных. Проверьте соединение с Internet и повторите загрузку.</p><p><a href="#" id="loadBase" class="button active">Загрузить данные</a></p></div>';
+			loadCnt = '<div class="content-block-inner"><p class="errorPage">'+window._lang_default.ERR+' '+page+'</p><p>'+window._lang_default.ERR2+'.</p><p><a href="#" id="loadBase" class="button active">'+window._lang_default.LOAD+'</a></p></div>';
 		}else{
 			if (window.debug) console.log('startpage - '+page);
 			if(typeof window.onPageGenerate == 'function') {
@@ -281,8 +294,8 @@ function getPage(page){
 	if((page == 'main' || page == 'main_old') && !loadCnt){
 		content = '' +                  
 		'<div class="content-block"> <div class="content-block inset"><div class="content-block-inner">'+
-		'<p>Это первый запуск приложения. Дождитесь загрузки данных.</p>'+
-		'<p><a href="#" id="loadBase" class="button active" style="display:none;">Загрузить данные</a></p>'+
+		'<p>'+window._lang_default.LOAD1+'.</p>'+
+		'<p><a href="#" id="loadBase" class="button active" style="display:none;">'+window._lang_default.LOAD+'</a></p>'+
 		''+
 		'</div>' +
 								'</div>'
@@ -294,8 +307,8 @@ function getPage(page){
 	}else if(page == 'main_offline' && !loadCnt){
 		content = '' +                  
 		'<div class="content-block"> <div class="content-block inset"><div class="content-block-inner">'+
-		'<p>Это первый запуск приложения. подключитесь к сети Internet и загрузите данные.</p>'+
-		'<p><a href="#" id="loadBase" class="button active">Загрузить данные</a></p>'+
+		'<p>'+window._lang_default.LOAD2+'.</p>'+
+		'<p><a href="#" id="loadBase" class="button active">'+window._lang_default.LOAD+'</a></p>'+
 		''+
 		'</div>' +
 								'</div>'
@@ -304,12 +317,12 @@ function getPage(page){
 		loadCnt = content;
 		//loadBaseDefault();
 	}else if(!loadCnt) {
-		loadCnt = '<div class="content-block-inner"><p class="errorPage">ERROR load page '+page+'</p></div>';
+		loadCnt = '<div class="content-block-inner"><p class="errorPage">'+window._lang_default.ERR+' '+page+'</p></div>';
 		
 	}
 	},
 	function(tx,err){
-	loadCnt = '<div class="content-block-inner"><p class="errorPage">ERROR sql load page '+page+'</p></div>';
+	loadCnt = '<div class="content-block-inner"><p class="errorPage">'+window._lang_default.ERRSQL+' '+page+'</p></div>';
 	}
 	);
 	});
@@ -531,7 +544,7 @@ function loadBaseDefault(step,step2){
 	window.curentLoadBase = true;
 	checkConnection();
 	if(!window.connection) {
-		window.myApp.alert('Нет соединения, загрузка невозможна.','Уведомление');
+		window.myApp.alert(window._lang_default.ERRCN+'.',window._lang_default.ALERT);
 		window.curentLoadBase = false;
 		return;
 	}
@@ -636,7 +649,7 @@ function loadBaseDefault(step,step2){
 					tx.executeSql("DELETE FROM tmpl WHERE ID>0",[]);
 				},function(){},function(){
 					
-					$$('#ldTimer .loadpersent').html('Ошибка связи');
+					$$('#ldTimer .loadpersent').html(window._lang_default.ERR3);
 					$$('#ldTimer .loadpersent').css({'width': '100%', 'background':'red'});
 					$$("#loadBase").show();
 					window.curentLoadBase = false;
@@ -671,7 +684,7 @@ function loadBaseDefault(step,step2){
 					tx.executeSql("DELETE FROM tmpl WHERE ID>0",[]);
 				},function(){},function(){
 					
-					$$('#ldTimer .loadpersent').html('Ошибка связи');
+					$$('#ldTimer .loadpersent').html(window._lang_default.ERR3);
 					$$('#ldTimer .loadpersent').css({'width': '100%', 'background':'red'});
 					$$("#loadBase").show();
 					window.curentLoadBase = false;
@@ -706,7 +719,7 @@ function loadBaseDefault(step,step2){
 					tx.executeSql("DELETE FROM tmpl WHERE ID>0",[]);
 				},function(){},function(){
 					
-					$$('#ldTimer .loadpersent').html('Ошибка связи');
+					$$('#ldTimer .loadpersent').html(window._lang_default.ERR3);
 					$$('#ldTimer .loadpersent').css({'width': '100%', 'background':'red'});
 					$$("#loadBase").show();
 					window.curentLoadBase = false;
@@ -735,7 +748,7 @@ function loadBaseDefault(step,step2){
 					tx.executeSql("DELETE FROM tmpl WHERE ID>0",[]);
 				},function(){},function(){
 					
-					$$('#ldTimer .loadpersent').html('Ошибка связи');
+					$$('#ldTimer .loadpersent').html(window._lang_default.ERR3);
 					$$('#ldTimer .loadpersent').css({'width': '100%', 'background':'red'});
 					$$("#loadBase").show();
 					window.curentLoadBase = false;
@@ -813,7 +826,7 @@ function loadPages(step,data){
 								
 								//setLastVersion(true);
 								
-								$$('#ldTimer .loadpersent').html('Загрузка данных завершена');
+								$$('#ldTimer .loadpersent').html(window._lang_default.LOADING);
 								$$('#ldTimer .loadpersent').css({'width': '100%'});
 								
 								//tmpl = {};
@@ -860,7 +873,7 @@ function loadPages(step,data){
 							tx.executeSql("DELETE FROM tmpl WHERE ID>0",[]);
 						},function(){},function(){
 							
-							$$('#ldTimer .loadpersent').html('Ошибка связи');
+							$$('#ldTimer .loadpersent').html(window._lang_default.ERR3);
 							$$('#ldTimer .loadpersent').css({'width': '100%', 'background':'red'});
 							$$("#loadBase").show();
 							window.curentLoadBase = false;
