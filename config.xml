@@ -11,9 +11,7 @@
 <plugin name="cordova-sqlite-storage" spec="~0.8.5" />
 <plugin name="cordova-plugin-splashscreen" spec="~4.0.3"/>
 <plugin name="cordova-plugin-admob-free"/>
-<plugin name="phonegap-plugin-push">
-    <param name="SENDER_ID" value="649883880658" />
-</plugin>
+<plugin name="phonegap-plugin-push"></plugin>
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -26,6 +24,7 @@
 	<preference name="SplashScreenDelay" value="3000" />
     <icon src="icon.png" />
     <platform name="android">
+		<resource-file src="google-services.json" target="google-services.json" />
         <allow-intent href="market:*" />
 		<preference name="android-minSdkVersion" value="16" />
 		<preference name="SplashMaintainAspectRatio" value="true" />
@@ -38,6 +37,7 @@
         <icon src="res/android/xxxhdpi.png" density="xxxhdpi" />
     </platform>
     <platform name="ios">
+		<resource-file src="GoogleService-Info.plist" />
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
 		<splash src="res/screen/ios/Default~iphone.png" width="320" height="480"/>
