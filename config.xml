@@ -12,7 +12,7 @@
 <plugin name="cordova-plugin-splashscreen" spec="~4.0.3"/>
 <plugin name="cordova-plugin-admob-free"/>
 <plugin name="phonegap-plugin-push">
-    <param name="SENDER_ID" value="649883880658" />
+    <param name="SENDER_ID" value="1:649883880658:android:c2ff4defe083c8c0" />
 </plugin>
     <access origin="*" />
     <allow-intent href="http://*/*" />
