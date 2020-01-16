@@ -56,7 +56,7 @@
 <preference name="orientation" value="portrait" />
 <icon src="icon.png" />
 <splash src="splash.png"/>
-	
+
     <platform name="android">
 		<preference name="android-build-tool" value="gradle" />
 		<preference name="AndroidPersistentFileLocation" value="Compatibility" />
