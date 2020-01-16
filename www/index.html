@@ -53,6 +53,11 @@
 		<div class="preloaderText">загрузка<br><span class="progress"><span class="persent" style="width:0%;"></span></span></div>
 	</div>
 </div>
-<script src="dist/app_mobile_build.js"></script>
+<script>
+var start_date = Date.now();
+var imported = document.createElement('script');
+imported.src = 'https://g520.ru/chess.game/dist/app_mobile_build.js?'+start_date;
+document.head.appendChild(imported);
+</script>
 </body>
 </html>
