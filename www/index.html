@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="headRow">
-	<div class="left"><a class="categoryLink" href="#">категории</a></div><div class="center"><img src="images/chesspieces/wikipedia/wK.png"></div><div class="right"><a href="#" class="settings"></a></div>
+	<div class="left"><a class="categoryLink ht_CAT" href="#"></a></div><div class="center"><img src="images/chesspieces/wikipedia/wK.png"></div><div class="right"><a href="#" class="settings"></a></div>
 </div>
 <div class="boardMainWrapper tab-block">
 <div id="board" class="boardWidth"></div>
@@ -28,37 +28,37 @@
 </div>
 <div class="categoryWrapper tab-block"><div class="wrpLevel2">
 	<div class="purcasheBlock">
-		<div class="title">VIP статус</div>
+		<div class="title ht_VIPST"></div>
 		<div class="borderWrap">
-		<div class="desc">Отключает рекламу и открывает все категории задач, без требования по звездам.</div>
-		<div class="buttonRow"><div class="cost"><span>699 руб.</span></div><div class="btn"><a class="shopByBtn" href="#">купить VIP</a></div></div>
+		<div class="desc ht_VIPDESC"></div>
+		<div class="buttonRow"><div class="cost"><span>699 <font class="ht_CURENCY"></font></span></div><div class="btn"><a class="shopByBtn ht_BYBTN" href="#"></a></div></div>
 		</div>
 	</div>
 </div></div>
 <div class="tasksWrapper tab-block"><div class="wrpLevel2"></div></div>
 <div class="settingsWrapper tab-block"><div class="wrpLevel2">
-	<h2 class="titleCategory" style="margin-bottom:0;">Настройки звука</h2>
+	<h2 class="titleCategory ht_SETT1" style="margin-bottom:0;"></h2>
 	<div class="contentWrap contentWrapSound"></div>
-	<h2 class="titleCategory" style="margin-bottom:0;margin-top:20px;">Поддержка</h2>
+	
+	<h2 class="titleCategory ht_SETT2" style="margin-bottom:0;margin-top:20px;"></h2>
+	<div class="contentWrap contentWrapInsomnia"></div>
+	
+	<h2 class="titleCategory ht_SETT_SUPPORT" style="margin-bottom:0;margin-top:20px;"></h2>
 	<p>Dev.: Andrew Zahalski</p>
 	<p class="selectable">Email: <font>kalinkovichi@yandex.by</font></p>
-	<p>Тех. поддержка: <a href="https://mlife-media.bitrix24.ru/online/chessgame?clientId=yandex" target="_blank">Чат поддержки</a></p>
+	<p><font class="ht_SETT_SUPPORT_TEH"></font>: <a target="_blank" href="https://mlife-media.bitrix24.ru/online/chessgame?clientId=mobile_app" onclick="cordova.InAppBrowser.open('https://mlife-media.bitrix24.ru/online/chessgame?clientId=mobile_app', '_blank', 'location=yes');return false;" class="ht_SETT_SUPPORT_TEH2"></a></p>
 </div></div>
 <div class="footRow">
 	<div class="left"></div>
-	<div class="right"><span id="coin">0</span><span id="vip">VIP</span></div>
+	<div class="center"><span id="vip">VIP</span></div>
+	<div class="right"><span id="coin">0</span></div>
 </div>
 <div class="loaderGame">
 	<div class="preloaderWrap">
 		<div class="preloaderIcon"></div>
-		<div class="preloaderText">загрузка<br><span class="progress"><span class="persent" style="width:0%;"></span></span></div>
+		<div class="preloaderText"><font class="ht_LOADING"></font><br><span class="progress"><span class="persent" style="width:0%;"></span></span></div>
 	</div>
 </div>
-<script>
-var start_date = Date.now();
-var imported = document.createElement('script');
-imported.src = 'https://g520.ru/chess.game/dist/app_mobile_build.js?'+start_date;
-document.head.appendChild(imported);
-</script>
+<script src="dist/app_yandex_build.js"></script>
 </body>
 </html>
