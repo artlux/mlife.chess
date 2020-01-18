@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "649883880658-b5lnvhhh4p8p49r4ote5etkhr3u339rm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "mlife.chess",
+            "certificate_hash": "3afd3aa81d46b8f7ffe1f2c3831d79217c164b2c"
+          }
+        },
+        {
           "client_id": "649883880658-q5cg6lp7gh3n7r0nhe6g3n7k3jjahi9t.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -52,6 +60,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "649883880658-coddt1ips5eiiqba8ttgfofpfkudap6q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "mlife.chesscn",
+            "certificate_hash": "14fc2ff41a61932f0ceab588da167ad01997e7d7"
+          }
+        },
         {
           "client_id": "649883880658-q5cg6lp7gh3n7r0nhe6g3n7k3jjahi9t.apps.googleusercontent.com",
           "client_type": 3
